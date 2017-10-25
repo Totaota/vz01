@@ -25,7 +25,8 @@ fr:
         unconfirmed_email: Email non confirmé
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
-        fullname: Nom complet
+        first_name: Prénom
+        last_name: Nom
     models:
       user: Utilisateur
   devise:
