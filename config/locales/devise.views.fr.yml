@@ -27,6 +27,13 @@ fr:
         updated_at: Date de mise à jour
         first_name: Prénom
         last_name: Nom
+        position_held: Poste occupé
+        social_reason: Raison sociale
+        street: Adresse
+        postal_code: Code postal
+        city: Ville
+        phone: Numéro de téléphone
+        
     models:
       user: Utilisateur
   devise:
