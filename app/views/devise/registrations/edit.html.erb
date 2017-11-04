@@ -1,73 +1,109 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-4 text-center">
-  
-    <h2>Modifier mon profil</h2>
-    <hr>
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item">
+        <%= link_to 'Modifier mon profil', edit_user_registration_path, class: 'sidebar-link active' %>
+      </li>
+    </ul>
+    <br>
+    <%= link_to 'Voir mon profil', user_path(current_user.id), class: 'btn btn-default wide1' %>
   </div>
-  
-  <div class="container-fluid"> 
+  <div class="col-md-7 text-center">
+    <div class="panel panel-default">
+      <div class="panel-heading">Mon profil</div>
+      <div class="panel-body">
     <div class="col-md-4 col-md-offset-4 text-center">  
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
-      <div class="form-group">
-        <%= f.label :position_held %><br />
-        <%= f.text_field :position_held, autofocus: true, class: "form-control", placeholder: "Ex Gérant, Community manager, Responsable marketing... " %>
-      </div>
-              
-      <div class="form-group">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Ex: Jean" %>
-      </div>
-              
-      <div class="form-group">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Ex: Dupont" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :email %><br/>
-        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Ex: example@vizioo.fr" %>
-      </div>
-      <div class="form-group">
-        <%= f.file_field :avatar %>
-      </div>
-      
-      
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-      
-      <div class="form-group">
-      <br />
-      <hr>
-      <h2>Modifier mon mot de passe </h2>
-      
-      
-        <%= f.label :password %><br /><i>(Laisser vide si vous ne voulez pas changer).</i><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nouveau mot de passe" %>
-        <% if @minimum_password_length %>
+        <%= render 'shared/devise_errors'%>
+          <div class="form-group">
+            <%= f.label :position_held %><br />
+            <%= f.text_field :position_held, autofocus: true, class: "form-control", placeholder: "Ex Gérant, Community manager, Responsable marketing... " %>
+          </div>
+                  
+          <div class="form-group">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Ex: Jean" %>
+          </div>
+                  
+          <div class="form-group">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Ex: Dupont" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Ex: example@vizioo.fr" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone %><br/>
+            <%= f.text_field :phone, class: "form-control", placeholder: "Numéro de téléphone" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :street %><br/>
+            <%= f.text_field :street, class: "form-control", placeholder: "Adresse" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :city %><br/>
+            <%= f.text_field :city, class: "form-control", placeholder: "Ville" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :postal_code %><br/>
+            <%= f.text_field :postal_code, class: "form-control", placeholder: "Code postal" %>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                  <span class="btn btn-default btn-file">
+                    Upload mon logo d'entreprise
+                    <%= f.file_field :avatar %>
+                  </span>
+                </div>
+            </div>
+          </div>      
+          
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          
+          <div class="form-group">
           <br />
-          <!-- <%= @minimum_password_length %> !-->
-          <em>(Votre mot de passe doit comprendre 8 caractères ou plus)</em>
+          <hr>
+          <h2>Modifier mon mot de passe </h2>
+          
+          
+            <%= f.label :password %><br /><i>(Laisser vide si vous ne voulez pas changer).</i><br />
+            <em>(Votre mot de passe doit comprendre 8 caractères ou plus)</em><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nouveau mot de passe" %>
+            <% if @minimum_password_length %>
+              <br />
+              <!-- <%= @minimum_password_length %> !-->
+              
+            
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation nouveau mot de passe" %>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :current_password %><br />
+            <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe actuel (pour confirmer tout changement)" %>
+          </div>
+        
+          <div class="actions">
+            <%= f.submit "Enregistrer" %>
+          </div>
+          </div>
+        
+        <% end %>
         
       </div>
-    
-      <div class="form-group">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation nouveau mot de passe" %>
-      </div>
-    
-      <div class="form-group">
-        <%= f.label :current_password %><br />
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe actuel (pour confirmer tout changement)" %>
-      </div>
     </div>
+
   </div>
-  <% end %>
-  <div class="col-md-4 col-md-offset-4 text-center">
-      <div class="actions">
-        <%= f.submit "Enregistrer" %>
-      </div>
-  </div>
+  
+  
+
   <% end %>
   <div class="col-md-4 col-md-offset-4 text-center">
     <h3>Supprimer mon compte</h3>

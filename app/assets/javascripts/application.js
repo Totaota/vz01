@@ -11,7 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require toastr
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+toastr.options = {
+ 
+ "positionClass": "toast-bottom-right"
+ 
+ }

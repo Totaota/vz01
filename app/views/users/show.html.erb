@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-3">
+        <%= image_tag avatar_url(@user), class:"avatar-full" %>
+        <div class="panel panel-default">
+            <div class="panel-heading">Vérification</div>
+            <div class="panel-body">
+                Email : <%= @user.email %><br>
+                Nom : <%= @user.first_name %> <%= @user.last_name %><br>
+                Poste occupé : <%= @user.position_held %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2></h2>
+        <h3><u>Mon entreprise active :</u></h3><br>
+        <h4><%= @user.social_reason %></h4>
+        <em><%= @user.street %></em> <em><%= @user.city %></em><br>
+        <em><%= @user.phone %></em><br>
+        <em><%= @user.postal_code %></em><br>
+    </div>
+</div>
+
+
+ 
